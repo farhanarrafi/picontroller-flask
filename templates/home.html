@@ -7,9 +7,9 @@
 
     <title>Pi Controller</title>
 
-    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link rel="manifest" href="{{ url_for("static", filename="manifest.json") }}">
+    <link rel="shortcut icon" href="{{ url_for("static", filename="img/favicon.ico") }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for("static", filename="img/favicon.ico") }}" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -23,10 +23,10 @@
                     <div class="col-sm-4">
                         <a href="#" class="thumbnail">
                             {% if component.status %}
-                                <img src="{{ url_for('static', filename='img/light_on.png') }}"
+                                <img src="{{ url_for("static", filename="img/light_on.png") }}"
                                      alt="Light" height="100px" width="100px">
                             {% else %}
-                                <img src="{{ url_for('static', filename='img/light_off.png') }}"
+                                <img src="{{ url_for("static", filename="img/light_off.png") }}"
                                      alt="Light" height="100px" width="100px">
                             {% endif %}
 
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12" style="font-size:3em; color:crimson">
+                            <div class="col-sm-12 toggle-switch" style="font-size:3em; color:crimson">
                                 {% if component.status %}
                                     <i class="fas fa-toggle-on"></i>
                                 {% else %}
@@ -60,6 +60,8 @@
     </div>
 </div>
 
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -72,5 +74,19 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script>
+    var sw = document.getElementsByClassName("toggle-switch");
+    sw.onclick = toggle_class;
+
+    function toggle_class() {
+        if(this.child().classList.contains("fas")) {
+            this.child().classList.remove('fa-toggle-off');
+            this.child().classList.add('fa-toggle-on');
+        } else {
+            this.child().classList.remove('fa-toggle-on');
+            this.child().classList.add('fa-toggle-of');
+        }
+    }
+</script>
 </body>
 </html>

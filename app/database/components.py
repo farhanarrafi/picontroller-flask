@@ -10,6 +10,15 @@ def initialize():
 
 
 def get_all():
-    initialize();
+    initialize()
     ref = db.reference('components')
     return ref.get()
+
+def get(id):
+    initialize()
+    ref = db.reference('components/' + id)
+    return ref.get()
+
+def set(id):
+    initialize()
+    ref = db.reference()

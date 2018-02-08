@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from app.database import components
 import json
-#from gpiozero import Button
+
 app = Flask(__name__)
 
 
