@@ -1,6 +1,5 @@
 from flask import Flask, render_template
-from app.database import components
-import json
+from app.model import components
 
 app = Flask(__name__)
 
