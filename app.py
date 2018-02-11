@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-from app.model import components
+from app.model import Components
+from app.controller import FirebaseController
 
 app = Flask(__name__)
 
@@ -10,9 +11,9 @@ app = Flask(__name__)
 
 @app.route('/pi')
 def pi_home():
+    fireB = FirebaseController()
     #component_list = json.loads(components.get_all())
-    print components.get_all()
-    return render_template('home.html', component_list = components.get_all())
+    return render_template('home.html', component_list = fireB.getAll())
 
 
 if __name__ == '__main__':
